@@ -229,4 +229,4 @@ Contributions are welcome! Feel free to open issues or submit PRs.
 
 ---
 
-Made with 🔥 by [Your Name]
+Made with 🔥 by Hrishikesh Atole
