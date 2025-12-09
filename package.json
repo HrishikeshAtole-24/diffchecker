@@ -1,0 +1,16 @@
+{
+  "name": "diffchecker-root",
+  "version": "1.0.0",
+  "description": "Modern text comparison tool - Root workspace",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run dev",
+    "setup-env": "cd backend && copy .env.example .env && cd ../frontend && copy .env.local.example .env.local",
+    "backend-prod": "cd backend && npm start",
+    "frontend-prod": "cd frontend && npm run build && npm start"
+  },
+  "keywords": ["diffchecker", "text-comparison", "nextjs", "express", "mongodb"],
+  "author": "",
+  "license": "MIT"
+}
