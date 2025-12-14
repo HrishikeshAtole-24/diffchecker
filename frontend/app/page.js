@@ -116,20 +116,21 @@ export default function Home() {
         transition={{ delay: 0.4 }}
         className="container mx-auto px-4 pb-8"
       >
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <Editor
-            value={leftText}
-            onChange={setLeftText}
-            title="Original Text"
-            icon={<Code2 className="w-5 h-5" />}
-          />
-          <Editor
-            value={rightText}
-            onChange={setRightText}
-            title="Modified Text"
-            icon={<Zap className="w-5 h-5" />}
-          />
-        </div>
+        {/* Diff Result - Show FIRST if Available */}
+        {diffResult && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="mb-8"
+          >
+            <DiffResult 
+              diffData={diffResult} 
+              mode={mode}
+              leftText={leftText}
+              rightText={rightText}
+            />
+          </motion.div>
+        )}
 
         {/* Action Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -172,8 +173,21 @@ export default function Home() {
           </motion.button>
         </div>
 
-        {/* Diff Result */}
-        {diffResult && <DiffResult diffData={diffResult} mode={mode} />}
+        {/* Editable Editors - Always visible at bottom */}
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <Editor
+            value={leftText}
+            onChange={setLeftText}
+            title="Original Text"
+            icon={<Code2 className="w-5 h-5" />}
+          />
+          <Editor
+            value={rightText}
+            onChange={setRightText}
+            title="Modified Text"
+            icon={<Zap className="w-5 h-5" />}
+          />
+        </div>
       </motion.div>
 
       {/* Save Modal */}
