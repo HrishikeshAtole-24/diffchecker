@@ -87,9 +87,15 @@ export const saveComparison = async (req, res) => {
 
   } catch (error) {
     console.error('Save comparison error:', error);
+    console.error('Error details:', {
+      message: error.message,
+      name: error.name,
+      code: error.code
+    });
     res.status(500).json({ 
       success: false, 
-      message: 'Error saving comparison' 
+      message: 'Error saving comparison',
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 };
